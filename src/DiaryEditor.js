@@ -1,7 +1,12 @@
-import { useRef, useState } from "react";
-const DiaryEditor = ({ onCreate }) => {
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { DiaryDispatchContext } from "./App";
+
+const DiaryEditor = () => {
+  const { onCreate } = useContext(DiaryDispatchContext);
+  //비구조화 할당으로 받아야한다.. 객체로 넘겨주고 있어서
   const authorInput = useRef();
   const contentInput = useRef();
+
   const [state, setState] = useState({
     author: "",
     content: "",
@@ -73,4 +78,4 @@ const DiaryEditor = ({ onCreate }) => {
   );
 };
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);
